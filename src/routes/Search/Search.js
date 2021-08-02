@@ -3,7 +3,7 @@ import { Section } from "../../components/Section";
 export const Search = () => {
   return (
     <div>
-      <Section></Section>
+      <Section>서치서치</Section>
     </div>
   );
 };
