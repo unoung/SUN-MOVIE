@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 const Headers = styled.div`
   width: 100%;
   height: 60px;
@@ -42,9 +43,25 @@ const Menu = styled.div`
   margin-left: 50px;
 `;
 
+const Event = styled.div`
+  background-color: blue;
+`;
+
 export const Header = () => {
+  const [bg, setBg] = useState();
+  const scrollHandler = () => {
+    const sct = window.pageYOffset;
+
+    if (sct >= 200) {
+      setBg("#1d1d1d");
+    } else {
+      setBg("transparent");
+    }
+  };
+  window.addEventListener("scroll", scrollHandler);
+
   return (
-    <Headers>
+    <Headers style={{ backgroundColor: bg }}>
       <InHeader>
         <Logo>
           <Link to="/">SUN</Link>
