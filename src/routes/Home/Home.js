@@ -2,29 +2,19 @@ import styled from "styled-components";
 import { Section } from "../../components/Section";
 import { moviesApi } from "../../api";
 import { useEffect, useState } from "react";
-
-// console.log(moviesApi.nowPlaying());
-const Main = styled.section`
-  width: 100%;
-  height: 900px;
-  background-color: #333;
-`;
+import { PageLoading } from "../../components/PageLoading";
+import { Main } from "./Main";
+import { PageError } from "./PageError";
 
 export const Home = () => {
   const [nowPlay, setNowPlay] = useState();
   const [popPlay, setPopPlay] = useState();
-
-  // const movieData = async () => {
-  //   // console.log(await moviesApi.nowPlaying());
-  //   const {
-  //     data: { results },
-  //   } = await moviesApi.nowPlaying();
-  // };
-  // movieData();
+  const [upPlay, setUpPlay] = useState();
+  const [loading, setLoading] = useState(true);
+  const [pageError, setPageError] = useState(false);
 
   useEffect(() => {
     const movieData = async () => {
-      // console.log(await moviesApi.nowPlaying());
       try {
         const {
           data: { results: NowResults },
@@ -35,18 +25,39 @@ export const Home = () => {
           data: { results: PopResults },
         } = await moviesApi.popular();
         setPopPlay(PopResults);
+
+        const {
+          data: { results: UpResults },
+        } = await moviesApi.upcoming();
+        setUpPlay(UpResults);
+
+        setLoading(false);
       } catch (error) {
-        console.log("error");
+        setPageError(true);
+        console.log(error);
+        //debug
       }
     };
 
     movieData();
   }, []);
-  console.log("현재상영", nowPlay);
+  // console.log("현재상영", nowPlay);
   console.log("인기", popPlay);
+  // console.log("상영예정", upPlay);
+
   return (
     <div>
-      <Main></Main>
+      {loading ? (
+        <PageLoading />
+      ) : (
+        <div>
+          {pageError ? (
+            <PageError></PageError>
+          ) : (
+            <div>{popPlay ? <Main aaa={popPlay[1]} /> : null}</div>
+          )}
+        </div>
+      )}
 
       <Section>홈 컨텐츠</Section>
     </div>
