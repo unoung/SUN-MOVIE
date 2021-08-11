@@ -5,6 +5,35 @@ import { useEffect, useState } from "react";
 import { PageLoading } from "../../components/PageLoading";
 import { Main } from "./Main";
 import { PageError } from "./PageError";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "../../styles/swiper.css";
+import SwiperCore, { Navigation } from "swiper";
+import { Link } from "react-router-dom";
+
+const MovieTitle = styled.h3`
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 20px;
+`;
+
+const CoverImg = styled.div`
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+`;
+
+const Title = styled.h1`
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 30px;
+`;
+
+const Container = styled.div`
+  margin-top: 100px;
+`;
+
+SwiperCore.use([Navigation]);
 
 export const Home = () => {
   const [nowPlay, setNowPlay] = useState();
@@ -13,6 +42,10 @@ export const Home = () => {
   const [loading, setLoading] = useState(true);
   const [pageError, setPageError] = useState(false);
 
+  const params = {
+    spaceBetween: 20,
+    slidesPerView: 5.3,
+  };
   useEffect(() => {
     const movieData = async () => {
       try {
@@ -59,7 +92,26 @@ export const Home = () => {
         </div>
       )}
 
-      <Section>홈 컨텐츠</Section>
+      <Section>
+        <Container>
+          <Title>현재 상영 영화</Title>
+          <Swiper {...params} navigation>
+            {nowPlay &&
+              nowPlay.map((play) => (
+                <SwiperSlide key={play.id}>
+                  <Link to={{ pathname: "#" }}>
+                    <CoverImg
+                      style={{
+                        backgroundImage: `url(https://image.tmdb.org/t/p/original${play.backdrop_path})`,
+                      }}
+                    />
+                    <MovieTitle>{play.title}</MovieTitle>
+                  </Link>
+                </SwiperSlide>
+              ))}
+          </Swiper>
+        </Container>
+      </Section>
     </div>
   );
 };
