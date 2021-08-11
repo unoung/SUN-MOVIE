@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+
 const Headers = styled.div`
   width: 100%;
   height: 60px;
@@ -8,6 +9,9 @@ const Headers = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  @media screen and (max-width: 500px) {
+    padding: 0 10px;
+  }
 `;
 
 const InHeader = styled.div`
