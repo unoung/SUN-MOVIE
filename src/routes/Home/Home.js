@@ -10,6 +10,7 @@ import "../../styles/swiper.css";
 import SwiperCore, { Navigation } from "swiper";
 import { Link } from "react-router-dom";
 import { Contents } from "./Contents";
+import { Footer } from "../../components/Footer";
 
 export const Home = () => {
   const [nowPlay, setNowPlay] = useState();
@@ -69,6 +70,8 @@ export const Home = () => {
         <Contents movietitle="상영 예정" Playing={upPlay} />
         <Contents movietitle="인기 영화" Playing={popPlay} />
       </Section>
+
+      <Footer />
     </div>
   );
 };
