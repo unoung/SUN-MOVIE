@@ -60,7 +60,7 @@ export const Home = () => {
           {pageError ? (
             <PageError></PageError>
           ) : (
-            <div>{popPlay ? <Main aaa={popPlay[3]} /> : null}</div>
+            <div>{popPlay ? <Main aaa={popPlay[7]} /> : null}</div>
           )}
         </div>
       )}

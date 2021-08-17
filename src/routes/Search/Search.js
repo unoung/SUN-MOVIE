@@ -1,4 +1,5 @@
 import { Section } from "../../components/Section";
+import { Testing } from "../../components/Testing";
 
 export const Search = () => {
   return (

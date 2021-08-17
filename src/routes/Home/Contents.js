@@ -63,6 +63,7 @@ export const Contents = ({ movietitle, Playing }) => {
       },
     },
   };
+
   return (
     <Container>
       <Title>{movietitle}</Title>
@@ -70,7 +71,7 @@ export const Contents = ({ movietitle, Playing }) => {
         {Playing &&
           Playing.map((play) => (
             <SwiperSlide key={play.id}>
-              <Link to={{ pathname: "#" }}>
+              <Link to={{ pathname: `/detail/${play.id}` }}>
                 <CoverImg
                   style={{
                     backgroundImage: `url(https://image.tmdb.org/t/p/original${play.backdrop_path})`,

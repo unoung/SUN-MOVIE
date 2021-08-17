@@ -9,6 +9,7 @@ const Headers = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 99;
   @media screen and (max-width: 500px) {
     padding: 0 10px;
   }
