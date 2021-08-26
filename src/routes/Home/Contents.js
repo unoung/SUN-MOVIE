@@ -11,7 +11,7 @@ const MovieTitle = styled.h3`
   font-weight: 600;
   margin-top: 20px;
   @media screen and (max-width: 500px) {
-    font-size: 15px;
+    display: none;
     margin-top: 10px;
   }
 `;
@@ -22,7 +22,7 @@ const CoverImg = styled.div`
   background-size: cover;
   background-position: center;
   @media screen and (max-width: 500px) {
-    height: 100px;
+    height: 200px;
     background-position: center;
   }
 `;
@@ -59,7 +59,7 @@ export const Contents = ({ movietitle, Playing }) => {
       },
       320: {
         spaceBetween: 10,
-        slidesPerView: 2.2,
+        slidesPerView: 1.8,
       },
     },
   };

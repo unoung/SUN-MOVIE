@@ -57,7 +57,7 @@ export const Header = () => {
   const scrollHandler = () => {
     const sct = window.pageYOffset;
 
-    if (sct >= 200) {
+    if (sct >= 100) {
       setBg("#1d1d1d");
     } else {
       setBg("transparent");

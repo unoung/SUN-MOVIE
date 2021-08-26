@@ -10,6 +10,12 @@ const Container = styled.div`
   padding-top: 150px;
   display: flex;
   justify-content: space-between;
+  @media screen and (max-width: 500px) {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 100px;
+  }
 `;
 
 const ConWrap = styled.div`
@@ -17,12 +23,20 @@ const ConWrap = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 50px;
+  @media screen and (max-width: 500px) {
+    width: 90%;
+    padding-top: 25px;
+  }
 `;
 
 const Title = styled.div`
   font-size: 70px;
   font-weight: 700;
   margin-bottom: 30px;
+  @media screen and (max-width: 500px) {
+    font-size: 28px;
+    margin-bottom: 18px;
+  }
 `;
 
 const CoverImg = styled.div`
@@ -32,22 +46,58 @@ const CoverImg = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    height: 350px;
+  }
 `;
 
-const Genre = styled.p``;
+const Genre = styled.p`
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 20px;
+  @media screen and (max-width: 500px) {
+    font-size: 16px;
+    font-weight: 500;
+  }
+`;
 
-const RunTime = styled.p``;
+const RunTime = styled.p`
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  margin-bottom: 15px;
+  @media screen and (max-width: 500px) {
+    font-weight: 300;
+  }
+`;
 
-const Release = styled.p``;
+const Release = styled.p`
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  margin-bottom: 15px;
+`;
 
-const Overview = styled.p``;
+const Overview = styled.p`
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 25px;
+  margin-bottom: 15px;
+`;
 
 const Genrewrap = styled.p`
   display: flex;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 400;
   margin-bottom: 15px;
   letter-spacing: 1px;
+  @media screen and (max-width: 500px) {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+    margin-bottom: 8px;
+  }
 `;
 
 // export const Detail = () => {
@@ -147,13 +197,12 @@ export const Detail = () => {
                     <RunTime>{nowDetail.runtime}분</RunTime>
                     <Genrewrap>
                       장르 :{" "}
-                      {nowDetail.genres.map((genre) => (
-                        <Genre> &nbsp; {genre.name},</Genre>
+                      {nowDetail.genres.map((genre, index) => (
+                        <Genre key={index}> &nbsp; {genre.name},</Genre>
                       ))}
                     </Genrewrap>
                     <Release>{nowDetail.release_date}</Release>
                     <Overview>{nowDetail.overview}</Overview>
-                    장르,러닝타임,개봉일,오버뷰,
                   </ConWrap>
                 </Container>
               ) : null}
