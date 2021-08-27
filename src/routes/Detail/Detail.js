@@ -8,6 +8,7 @@ import { Section } from "../../components/Section";
 import { Helmet } from "react-helmet-async";
 import { PageTitle } from "../../components/PageTitle";
 import { CoverVideo } from "./CoverVideo";
+import { Footer } from "../../components/Footer";
 
 const Container = styled.div`
   padding-top: 150px;

@@ -8,6 +8,10 @@ const SFooter = styled.footer`
   justify-content: center;
   align-items: center;
   color: #555;
+  @media screen and (max-width: 500px) {
+    margin-top: 100px;
+    height: 80px;
+  }
 `;
 
 export const Footer = () => {
