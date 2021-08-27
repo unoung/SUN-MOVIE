@@ -5,6 +5,7 @@ import { moviesApi } from "../../api";
 import { PageLoading } from "../../components/PageLoading";
 import { PageError } from "../Home/PageError";
 import { Section } from "../../components/Section";
+import { Helmet } from "react-helmet-async";
 
 const Container = styled.div`
   padding-top: 150px;
@@ -100,6 +101,15 @@ const Genrewrap = styled.p`
   }
 `;
 
+const Video = styled.iframe`
+  width: 45%;
+  height: 70vh;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    height: 350px;
+  }
+`;
+
 // export const Detail = () => {
 //   const [nowDetails, setDetails] = useState();
 //   const [loading, setLoading] = useState(true);
@@ -156,6 +166,7 @@ const Genrewrap = styled.p`
 export const Detail = () => {
   const { movieId } = useParams();
   const [nowDetail, setDetails] = useState();
+  const [nowvideo, setVideo] = useState();
   const [loading, setLoading] = useState(true);
   const [pageError, setPageError] = useState(false);
 
@@ -165,6 +176,12 @@ export const Detail = () => {
         const { data: movieDetail } = await moviesApi.detail(movieId);
 
         setDetails(movieDetail);
+
+        const {
+          data: { results: videoData },
+        } = await moviesApi.video(movieId);
+        // console.log(videoData);
+        videoData.length > 0 ? setVideo(videoData[0].key) : setVideo("");
       };
       setLoading(false);
       detailData();
@@ -173,10 +190,14 @@ export const Detail = () => {
     }
   }, []);
 
-  console.log(nowDetail);
+  console.log(nowvideo);
+  // console.log(nowDetail);
 
   return (
     <div>
+      <Helmet>
+        <title>{`Sun movie | ${nowDetail && nowDetail.title}`}</title>
+      </Helmet>
       {loading ? (
         <PageLoading />
       ) : (
@@ -187,11 +208,27 @@ export const Detail = () => {
             <Section>
               {nowDetail ? (
                 <Container>
-                  <CoverImg
+                  {/* <CoverImg
                     style={{
                       backgroundImage: `url(https://image.tmdb.org/t/p/original/${nowDetail.backdrop_path})`,
                     }}
-                  />
+                  /> */}
+                  {nowvideo ? (
+                    <Video
+                      src={`https://www.youtube.com/embed/${nowvideo}`}
+                      title="YouTube video player"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen
+                    />
+                  ) : (
+                    <CoverImg
+                      style={{
+                        backgroundImage: `url(https://image.tmdb.org/t/p/original/${nowDetail.backdrop_path})`,
+                      }}
+                    />
+                  )}
+
                   <ConWrap>
                     <Title>{nowDetail.title}</Title>
                     <RunTime>{nowDetail.runtime}분</RunTime>
