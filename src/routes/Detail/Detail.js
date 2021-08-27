@@ -6,6 +6,8 @@ import { PageLoading } from "../../components/PageLoading";
 import { PageError } from "../Home/PageError";
 import { Section } from "../../components/Section";
 import { Helmet } from "react-helmet-async";
+import { PageTitle } from "../../components/PageTitle";
+import { CoverVideo } from "./CoverVideo";
 
 const Container = styled.div`
   padding-top: 150px;
@@ -37,19 +39,6 @@ const Title = styled.div`
   @media screen and (max-width: 500px) {
     font-size: 28px;
     margin-bottom: 18px;
-  }
-`;
-
-const CoverImg = styled.div`
-  width: 45%;
-  height: 70vh;
-  background-color: gray;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  @media screen and (max-width: 500px) {
-    width: 100%;
-    height: 350px;
   }
 `;
 
@@ -98,15 +87,6 @@ const Genrewrap = styled.p`
     font-weight: 500;
     letter-spacing: 0;
     margin-bottom: 8px;
-  }
-`;
-
-const Video = styled.iframe`
-  width: 45%;
-  height: 70vh;
-  @media screen and (max-width: 500px) {
-    width: 100%;
-    height: 350px;
   }
 `;
 
@@ -195,9 +175,7 @@ export const Detail = () => {
 
   return (
     <div>
-      <Helmet>
-        <title>{`Sun movie | ${nowDetail && nowDetail.title}`}</title>
-      </Helmet>
+      <PageTitle pagetitle={nowDetail && nowDetail.title} />
       {loading ? (
         <PageLoading />
       ) : (
@@ -208,26 +186,10 @@ export const Detail = () => {
             <Section>
               {nowDetail ? (
                 <Container>
-                  {/* <CoverImg
-                    style={{
-                      backgroundImage: `url(https://image.tmdb.org/t/p/original/${nowDetail.backdrop_path})`,
-                    }}
-                  /> */}
-                  {nowvideo ? (
-                    <Video
-                      src={`https://www.youtube.com/embed/${nowvideo}`}
-                      title="YouTube video player"
-                      frameborder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowfullscreen
-                    />
-                  ) : (
-                    <CoverImg
-                      style={{
-                        backgroundImage: `url(https://image.tmdb.org/t/p/original/${nowDetail.backdrop_path})`,
-                      }}
-                    />
-                  )}
+                  <CoverVideo
+                    covervideo={nowvideo}
+                    Img={nowDetail.backdrop_path}
+                  />
 
                   <ConWrap>
                     <Title>{nowDetail.title}</Title>
