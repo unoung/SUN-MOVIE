@@ -1,16 +1,16 @@
-import styled from "styled-components";
+// import styled from "styled-components";
 import { Section } from "../../components/Section";
 import { moviesApi } from "../../api";
 import { useEffect, useState } from "react";
 import { PageLoading } from "../../components/PageLoading";
 import { Main } from "./Main";
 import { PageError } from "./PageError";
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { Swiper, SwiperSlide } from "swiper/react";
 import "../../styles/swiper.css";
-import SwiperCore, { Navigation } from "swiper";
-import { Link } from "react-router-dom";
+// import SwiperCore, { Navigation } from "swiper";
+// import { Link } from "react-router-dom";
 import { Contents } from "./Contents";
-import { Footer } from "../../components/Footer";
+// import { Footer } from "../../components/Footer";
 
 export const Home = () => {
   const [nowPlay, setNowPlay] = useState();
@@ -48,7 +48,7 @@ export const Home = () => {
     movieData();
   }, []);
   // console.log("현재상영", nowPlay);
-  console.log("인기", popPlay);
+  // console.log("인기", popPlay);
   // console.log("상영예정", upPlay);
 
   return (

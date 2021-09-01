@@ -3,8 +3,8 @@ import "../../styles/swiper.css";
 import SwiperCore, { Navigation } from "swiper";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { moviesApi } from "../../api";
-import { useState } from "react";
+// import { moviesApi } from "../../api";
+// import { useState } from "react";
 
 const MovieTitle = styled.h3`
   font-size: 18px;
@@ -46,9 +46,9 @@ const Container = styled.div`
 SwiperCore.use([Navigation]);
 
 export const Contents = ({ movietitle, Playing }) => {
-  const [nowPlay, setNowPlay] = useState();
-  const [popPlay, setPopPlay] = useState();
-  const [upPlay, setUpPlay] = useState();
+  // const [nowPlay, setNowPlay] = useState();
+  // const [popPlay, setPopPlay] = useState();
+  // const [upPlay, setUpPlay] = useState();
   const params = {
     spaceBetween: 20,
     slidesPerView: 4.3,

@@ -48,10 +48,6 @@ const Menu = styled.div`
   margin-left: 50px;
 `;
 
-const Event = styled.div`
-  background-color: blue;
-`;
-
 export const Header = () => {
   const [bg, setBg] = useState();
   const scrollHandler = () => {

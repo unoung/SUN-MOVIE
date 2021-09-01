@@ -1,12 +1,13 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import styled from "styled-components";
 import { moviesApi } from "../../api";
 import { Section } from "../../components/Section";
-import { Testing } from "../../components/Testing";
+// import { Testing } from "../../components/Testing";
 import { PageError } from "../Home/PageError";
 import { PageLoading } from "../../components/PageLoading";
 import { Link } from "react-router-dom";
+import { PageTitle } from "../../components/PageTitle";
 
 const Container = styled.div`
   margin-top: 150px;
@@ -70,6 +71,12 @@ export const Search = () => {
         data: { results },
       } = await moviesApi.search(term);
 
+      // if(results.length <= 0){
+      //   setNosearch("검색 엑스")
+      // }else{
+      //   setNosearch("")
+
+      // }
       setSearch(results);
       setLoading(false);
       console.log(await moviesApi.search(term));
@@ -85,6 +92,7 @@ export const Search = () => {
       2.인풋태그 내용 알아오기 (react-hook-form)
       3.api 에서 search를 가져와 매개변수로 인풋태그 내용 전달하기
        */}
+      <PageTitle title={"검색"} />
       <Section>
         <Container>
           <Form onSubmit={handleSubmit(onSubmit)}>

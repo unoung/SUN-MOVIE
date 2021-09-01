@@ -1,14 +1,14 @@
-import { useLocation, useParams } from "react-router-dom";
-import { useEffect, useState } from "react/cjs/react.development";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { moviesApi } from "../../api";
 import { PageLoading } from "../../components/PageLoading";
 import { PageError } from "../Home/PageError";
 import { Section } from "../../components/Section";
-import { Helmet } from "react-helmet-async";
+// import { Helmet } from "react-helmet-async";
 import { PageTitle } from "../../components/PageTitle";
 import { CoverVideo } from "./CoverVideo";
-import { Footer } from "../../components/Footer";
+// import { Footer } from "../../components/Footer";
 
 const Container = styled.div`
   padding-top: 150px;
@@ -169,7 +169,7 @@ export const Detail = () => {
     } catch (error) {
       setPageError(true);
     }
-  }, []);
+  }, [movieId]);
 
   console.log(nowvideo);
   // console.log(nowDetail);
