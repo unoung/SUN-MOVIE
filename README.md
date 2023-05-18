@@ -5,7 +5,7 @@
 <br/>
 
 # Purpose
-- 🎬 React를 사용한 OTT(Over The Top) 서비스 제공 사이트 NETFLIX 클론 프로젝트
+- 🎬 React를 사용한 OTT(Over The Top) 서비스 제공 사이트 클론 프로젝트
 
 <br/>
 
