@@ -1,6 +1,7 @@
 # 🔆 SUN-MOVIE
 
 <br/>
+https://github.com/unoung/SUN-MOVIE/assets/84708950/e78d3c7b-1713-4bae-b904-903f0961ee20
 
 # Purpose
 - 🎬 React를 사용한 OTT(Over The Top) 서비스 제공 사이트 NETFLIX 클론 프로젝트
